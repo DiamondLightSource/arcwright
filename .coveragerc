@@ -1,0 +1,7 @@
+[report]
+omit =
+    setup.py
+    arcwright/__main__.py
+    arcwright/_version.py
+    versioneer.py
+    tests/*
