@@ -1,0 +1,42 @@
+[build-system]
+requires = [
+    "hatchling>=1.6.0",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "arcwright"
+description = "Tools for integrating data from the XPDF-ARC detector on I15-1"
+readme = "README.rst"
+license = "MIT"
+authors = [
+  { name="Phil Chater", email="philip.chater@diamond.ac.uk" },
+]
+maintainers = [
+  { name="Dean Keeble", email="dean.keeble@diamond.ac.uk" },
+]
+keywords = [
+    "arcwright",
+]
+classifiers = [
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+]
+dependencies = []
+dynamic = [
+    "version",
+]
+
+[project.scripts]
+arcwright = "arcwright.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/DiamondLightSource/arcwright"
+
+[tool.hatch.version]
+path = "arcwright/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/arcwright",
+]
