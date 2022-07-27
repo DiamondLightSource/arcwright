@@ -60,3 +60,9 @@ target/
 
 # pyenv python configuration file
 .python-version
+
+# conda environment if there's one there
+.env
+
+# pylint configuration
+.pylintrc
