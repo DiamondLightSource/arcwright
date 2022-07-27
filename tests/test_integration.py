@@ -187,36 +187,30 @@ def test_integrate1d_step_size(radial_range, npt):
     assert result.radial[1] - result.radial[0] == approx(step_size)
 
 
-def test_actual_integration():
+def test_actual_integration(data_directory):
     """
     test adding an actual image results in something reasonable looking
     """
-    arcfai = ArcFAI(
-        from_json="/dls/i15-1/data/2022/cm31137-3/processed/cal/arc_test_json_names.json"
-    )
-    with h5.File("/dls/i15-1/data/2022/cm31137-3/i15-1-53013.nxs", "r") as f:
+    arcfai = ArcFAI(from_json=data_directory / "arc_test_json_names.json")
+    with h5.File(data_directory / "i15-1-53013.nxs", "r") as f:
         data = f["/entry/arc1AD/data"][0]
         tth = f["/entry/arc1AD/dummy_tth_value"][0]
     assert len(data) == len(tth) == 2
     for d, t in zip(data, tth):
         arcfai.add_imgs_to_goniometer_refinements([d], [t])
     result = arcfai.integrate1d()
-    previous_result = np.loadtxt("/scratch/arcwright/output.txt").T
+    previous_result = np.loadtxt(data_directory / "example.txt").T
     assert result.radial == approx(previous_result[0])
     assert result.intensity == approx(previous_result[1])
 
 
-def test_adding_separately_equals_adding_together():
+def test_adding_separately_equals_adding_together(data_directory):
     """
     test that adding the data sequentially gives the same result as adding together
     """
-    arcfai1 = ArcFAI(
-        from_json="/dls/i15-1/data/2022/cm31137-3/processed/cal/arc_test_json_names.json"
-    )
-    arcfai2 = ArcFAI(
-        from_json="/dls/i15-1/data/2022/cm31137-3/processed/cal/arc_test_json_names.json"
-    )
-    with h5.File("/dls/i15-1/data/2022/cm31137-3/i15-1-53013.nxs", "r") as f:
+    arcfai1 = ArcFAI(from_json=data_directory / "arc_test_json_names.json")
+    arcfai2 = ArcFAI(from_json=data_directory / "arc_test_json_names.json")
+    with h5.File(data_directory / "i15-1-53013.nxs", "r") as f:
         data = f["/entry/arc1AD/data"][0]
         tth = f["/entry/arc1AD/dummy_tth_value"][0]
     assert len(data) == len(tth) == 2
