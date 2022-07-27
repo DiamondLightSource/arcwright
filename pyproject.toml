@@ -1,6 +1,7 @@
 [build-system]
 requires = [
     "hatchling>=1.6.0",
+    "hatch-vcs",
 ]
 build-backend = "hatchling.build"
 
@@ -38,9 +39,12 @@ arcwright = "arcwright.cli:cli"
 Homepage = "https://github.com/DiamondLightSource/arcwright"
 
 [tool.hatch.version]
-path = "arcwright/__init__.py"
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/arcwright/_version.py"
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "/arcwright",
+    "/src/arcwright",
 ]

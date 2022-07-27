@@ -66,3 +66,6 @@ target/
 
 # pylint configuration
 .pylintrc
+
+# _version file
+src/arcwright/_version.py

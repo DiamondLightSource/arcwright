@@ -1,5 +1,5 @@
 from argparse import ArgumentParser
-from arcwright import __version__
+from ._version import __version__
 
 
 def cli(args=None):
