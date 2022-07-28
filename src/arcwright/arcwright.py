@@ -6,6 +6,7 @@ Created on Thu Nov 28 09:27:10 2019
 
 import numpy as np
 import math
+from typing import Optional
 from pyFAI.detectors import Detector
 from pyFAI.goniometer import GoniometerRefinement, ExtendedTransformation
 from pyFAI.gui import jupyter
@@ -702,13 +703,13 @@ class ArcFAI(object):
                 json.dump(json_dict, outfile, indent=4)
         return json_dict
 
-    def from_json(self, injson, nrj=None):
-        """Populates an ArcCalibrator object with parameters from a json file
+    def from_json(self, injson: str | dict, nrj: Optional[float] = None) -> None:
+        """Populates an ArcCalibrator object with parameters from a json file.
 
-        :param injson: string, path to a valid json file
-                       OR dict, a valid json dictionary
-        :param nrj:    float, energy in keV to overwrite the value for the json file
-                       default = None (i.e. use the value from the json file)"""
+        Args:
+            injson: path to a valid json file, or a valid dictionary
+            nrj: The energy in keV if you want to overwrite the value from the configuration
+        """
         if type(injson) == type({}):
             self.json = injson
         else:

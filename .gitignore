@@ -69,3 +69,6 @@ target/
 
 # _version file
 src/arcwright/_version.py
+
+# built docs in site
+site/

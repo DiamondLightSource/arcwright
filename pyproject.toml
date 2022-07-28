@@ -37,6 +37,7 @@ arcwright = "arcwright.cli:cli"
 
 [project.urls]
 Homepage = "https://github.com/DiamondLightSource/arcwright"
+Issues = "https://github.com/DiamondLightSource/arcwright/issues"
 
 [tool.hatch.version]
 source = "vcs"
@@ -48,3 +49,13 @@ version-file = "src/arcwright/_version.py"
 include = [
     "/src/arcwright",
 ]
+
+[tool.hatch.envs.docs]
+dependencies = [
+  "mkdocs",
+  "mkdocstrings-python",
+  "mkdocs-material"
+]
+[tool.hatch.envs.docs.scripts]
+build = "mkdocs build --clean --strict"
+serve = "mkdocs serve"

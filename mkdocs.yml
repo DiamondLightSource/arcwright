@@ -1,0 +1,12 @@
+site_name: My Docs
+
+theme:
+  name: material
+
+plugins:
+- search
+- mkdocstrings
+
+nav:
+    - 'index.md'
+    - 'arcfai.md'
