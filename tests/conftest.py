@@ -1,7 +1,23 @@
 import os
 import pytest
-from distutils import dir_util
+import shutil
+import errno
 from arcwright.arcwright import ArcFAI, ArcModule
+
+
+def copyFile(src, dst):
+    try:
+        shutil.copytree(src, dst)
+    # Depend what you need here to catch the problem
+    except OSError as exc:
+        # File already exist
+        if exc.errno == errno.EEXIST:
+            shutil.copy(src, dst)
+        # The dirtory does not exist
+        if exc.errno == errno.ENOENT:
+            shutil.copy(src, dst)
+        else:
+            raise
 
 
 @pytest.fixture
@@ -25,6 +41,8 @@ def data_directory(tmp_path, request):
     test_dir, _ = os.path.splitext(filename)
 
     if os.path.isdir(test_dir):
-        dir_util.copy_tree(test_dir, str(tmp_path))
+        if os.path.exists(tmp_path):
+            shutil.rmtree(tmp_path)
+        shutil.copytree(test_dir, tmp_path)
 
     return tmp_path
