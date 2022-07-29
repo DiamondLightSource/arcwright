@@ -46,9 +46,10 @@ source = "vcs"
 version-file = "src/arcwright/_version.py"
 
 [tool.hatch.build.targets.sdist]
-include = [
-    "/src/arcwright",
-]
+packages = ["src/arcwright"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/arcwright"]
 
 [tool.hatch.envs.docs]
 dependencies = [
@@ -56,6 +57,31 @@ dependencies = [
   "mkdocstrings-python",
   "mkdocs-material"
 ]
+
 [tool.hatch.envs.docs.scripts]
 build = "mkdocs build --clean --strict"
 serve = "mkdocs serve"
+
+[tool.hatch.envs.testing]
+dependencies = [
+  "pytest",
+  "pytest-cov",
+]
+
+[tool.hatch.envs.testing.scripts]
+cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=arcwright --cov=tests"
+no-cov = "cov --no-cov"
+
+[tool.coverage.run]
+branch = true
+parallel = true
+omit = [
+  "src/arcwright/__main__.py",
+  "src/arcwright/_version.py",
+  "tests/*",
+]
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+]
