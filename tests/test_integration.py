@@ -220,3 +220,15 @@ def test_adding_separately_equals_adding_together(data_directory):
     arcfai2.add_imgs_to_goniometer_refinements(data, tth)
     result2 = arcfai2.integrate1d()
     assert result1.radial == approx(result2.radial)
+
+
+def test_adding_inequal_length_data_and_tth_raises():
+    """
+    test that adding len(imgs) != len(tth) raises exception
+    """
+    arcfai = ArcFAI()
+    data = np.ones((6604, 768))
+    with pytest.raises(ValueError):
+        arcfai.add_imgs_to_goniometer_refinements([data], [0, 1])
+    with pytest.raises(ValueError):
+        arcfai.add_imgs_to_goniometer_refinements([data, data], [0])
