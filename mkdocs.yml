@@ -1,4 +1,4 @@
-site_name: My Docs
+site_name: "Arcwright Documentation"
 
 theme:
   name: material
@@ -9,4 +9,6 @@ plugins:
 
 nav:
     - 'index.md'
+    - 'installation.md'
+    - 'tutorial.md'
     - 'arcfai.md'

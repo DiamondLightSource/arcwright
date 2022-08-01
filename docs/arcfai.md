@@ -1,3 +1,3 @@
-# The ArcFAI - Angularly Resolved Cadmium Telluride Fast Azimuthal Integrator
-
+# The full ArcFAI API
+Descriptions of the ArcFAI methods.
 ::: arcwright.arcwright.ArcFAI
