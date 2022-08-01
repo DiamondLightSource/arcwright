@@ -650,7 +650,9 @@ class ArcFAI(object):
         return [self.get_img_from_module_imgs(img, padvalue=padvalue) for img in imgs]
 
     def solidAngleArray(self, tths=None, kwargs={"absolute": True}, padvalue=np.nan):
-        return self.getPyFaiArray(tths, method="solidAngleArray", padvalue=padvalue)
+        return self.getPyFaiArray(
+            tths, method="solidAngleArray", kwargs=kwargs, padvalue=padvalue
+        )
 
     def chiArray(self, tths=None, padvalue=np.nan):
         return self.getPyFaiArray(tths, method="chiArray", padvalue=padvalue)
