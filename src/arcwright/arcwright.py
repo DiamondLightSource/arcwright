@@ -5,6 +5,7 @@ Created on Thu Nov 28 09:27:10 2019
 """
 
 import numpy as np
+from numpy.typing import ArrayLike
 import math
 from typing import Optional
 from pyFAI.detectors import Detector
@@ -68,6 +69,7 @@ class ArcFAI(object):
         self.param_names_split = param_names_split
         self.param_names_common = param_names_common
         self.max_tth_for_get_pts_per_deg = 180.0
+        self.tth_values = []
 
         unitsdict = {
             "q": "q_A^-1",
@@ -358,17 +360,30 @@ class ArcFAI(object):
                     )
                 )
 
-    def add_imgs_to_goniometer_refinements(self, imgs, tths, verbose=False):
+    def add_imgs_to_goniometer_refinements(
+        self, imgs: list[ArrayLike], tths: list[float], verbose: Optional[bool] = False
+    ) -> None:
+        """Add one or multiple images.
+
+        Args:
+            imgs: list of image data to add.
+            tths: list of two theta values
+            verbose: increase output verboscity
+        """
+        if len(imgs) != len(tths):
+            raise ValueError("must provide same number of images and tth values")
         mod_imgs = {
             tth: self.get_module_imgs_from_img(imgs[i]) for i, tth in enumerate(tths)
         }
+        n = len(self.tth_values)
         for i, module_name in enumerate(self.module_names):
             for tth in tths:
                 sg = self.goniometers[module_name].new_geometry(
-                    "{}_tth{}".format(module_name, tth),
+                    "{}_tth{}".format(module_name, n),
                     image=mod_imgs[tth][i],
                     metadata=tth,
                 )
+        self.tth_values.extend(tths)
 
     def extract_cps_from_sgs(self, withPlot=False, max_tth_for_get_pts_per_deg=None):
         if max_tth_for_get_pts_per_deg:
