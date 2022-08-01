@@ -60,10 +60,9 @@ class ArcFAI(object):
         self.pixel_pad_size = pixel_pad_size
         self.n_modules = n_modules
         self.module_names = ["module_{}".format(i) for i in range(self.n_modules)]
-        self.module_approx_tths = {
-            "module_{}".format(i): tth_offset + (i * tth_offset_between_modules)
-            for i in range(self.n_modules)
-        }
+        self.tth_offset = tth_offset
+        self.tth_offset_between_modules = tth_offset_between_modules
+        self.module_approx_tths = self._calculate_approx_tth_values()
         self.modules = {}
         self.goniometers = {}
         self.param_names_split = param_names_split
@@ -703,6 +702,25 @@ class ArcFAI(object):
                 json.dump(json_dict, outfile, indent=4)
         return json_dict
 
+    def _clear(self) -> None:
+        """Clear the stored modules, goniometers, tth values."""
+        self.modules = {}
+        self.goniometers = {}
+        self.module_approx_tths = {}
+        self.n_modules = 0
+        self.module_names = []
+
+    def _calculate_approx_tth_values(self) -> dict:
+        """Calculates the approx tth values using the tth_offset_between_modules
+        Returns:
+            dictionary mapping module names to approximate tth values
+        """
+        return {
+            "module_{}".format(i): self.tth_offset
+            + (i * self.tth_offset_between_modules)
+            for i in range(self.n_modules)
+        }
+
     def from_json(self, injson: str | dict, nrj: Optional[float] = None) -> None:
         """Populates an ArcCalibrator object with parameters from a json file.
 
@@ -732,10 +750,13 @@ class ArcFAI(object):
                 )
             self.nrj = nrj
             self.wavelength = (hc / nrj) * 1e-10
-        for module_name in self.json["goniometers"]:
+        self._clear()
+        self.n_modules = len(self.json["goniometers"])
+        for module_name, param in self.json["goniometers"].items():
+            self.module_names.append(module_name)
             self.modules[module_name] = ArcModule()
-            param = self.json["goniometers"][module_name]
             param.update(self.json["param_common"])
             self.goniometers[module_name] = self._get_module_goiniometer(
                 module_name, param
             )
+            self.module_approx_tths[module_name] = -param["offset"]
