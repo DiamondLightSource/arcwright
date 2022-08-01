@@ -1,5 +1,7 @@
 site_name: "Arcwright Documentation"
 
+repo_url: "https://github.com/DiamondLightSource/arcwright"
+
 theme:
   name: material
 
