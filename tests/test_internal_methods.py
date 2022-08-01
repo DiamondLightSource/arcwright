@@ -132,18 +132,18 @@ def test_update_gonio_params_2(capfd):
     assert out.count("1.0") == 2 + 5 * arcfai.n_modules
 
 
-@pytest.mark.parametrize("this_shape", [(10, 10), (3000, 300), (6604, 768)])
-def test_solidAngleArray_basic(this_shape):
+def test_solidAngleArray_basic():
     """
     test the solidAngleArray method
-    TODO maybe this is a garbage test
     """
     arcfai = ArcFAI()
-    data = np.ones(this_shape)
+    data = np.ones((6604, 768))
     arcfai.add_imgs_to_goniometer_refinements([data], [0])
     result = arcfai.solidAngleArray()
     assert isinstance(result, list)
-    assert result[0].shape == this_shape
+    assert len(result) == 1
+    assert np.nanmax(result[0]) <= 1
+    assert np.nanmin(result[0]) >= 0
 
 
 def test_solidAngleArray_relative():
@@ -166,7 +166,9 @@ def test_solidAngleArray_absolute():
     data = np.ones((6604, 768))
     arcfai.add_imgs_to_goniometer_refinements([data], [0])
     absolute = arcfai.solidAngleArray(kwargs={"absolute": True})
-    approximate_solid_angle = arcfai.pixel_size**2 / arcfai.dist
+    l = arcfai.pixel_size
+    d = arcfai.dist
+    approximate_solid_angle = 4 * np.arcsin(l * l / np.sqrt((l**2 + 4 * d**2) ** 2))
     assert np.nanmax(absolute[0]) == approx(approximate_solid_angle)
 
 
@@ -205,3 +207,23 @@ def test_image_conversion():
     image = arcfai.get_img_from_module_imgs(modules)
     new_modules = arcfai.get_module_imgs_from_img(image)
     assert all(m1 == approx(m2) for m1, m2 in zip(modules, new_modules))
+
+
+def test_twoThetaArray():
+    """
+    test that the twoThetaArray method returns a reasonable looking result
+    """
+    arcfai = ArcFAI()
+    tth_array = arcfai.twoThetaArray([0])
+    assert np.nanmax(tth_array) > 1.0
+
+
+@pytest.mark.parametrize("tth", [0, 1.5, 5.0, 10])
+def test_twoThetaArray_multiple(tth):
+    """
+    test that the twoThetaArray method returns a reasonable looking result
+    """
+    arcfai = ArcFAI()
+    tth_array = arcfai.twoThetaArray([0, tth])
+    difference = tth_array[0] - tth_array[1]
+    assert np.degrees(np.nanmax(difference)) == approx(tth)
