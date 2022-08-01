@@ -683,10 +683,17 @@ class ArcFAI(object):
         return None  # [self.get_img_from_module_imgs(z),self.get_img_from_module_imgs(y),self.get_img_from_module_imgs(x)]
 
     def cos_incidence(self, tth, path="cython", padvalue=np.nan):
-        """WORK IN PROGRESS! gives a lot of warnings about bilinear:Netagive index along dim1 or dim2 etc."""
-        # zyx = self.calc_pos_zyx(tth)
-        # imgs = [self.goniometers[module_name].get_mg([tth]).ais[0].cos_incidence(zyx[1], zyx[2], path=path) for module_name in self.module_names]
-        return None  # self.get_img_from_module_imgs(imgs,padvalue=padvalue)
+        x = np.arange(self.module_shape[0])
+        y = np.arange(self.module_shape[1])
+        YY, XX = np.meshgrid(y, x)
+        imgs = [
+            self.goniometers[module_name]
+            .get_mg([tth])
+            .ais[0]
+            .cos_incidence(XX, YY, path=path)
+            for module_name in self.module_names
+        ]
+        return self.get_img_from_module_imgs(imgs, padvalue=padvalue)
 
     def to_json(self, filepath=None):
         """Creates a json object representating the ArcCalibrator object parameters
