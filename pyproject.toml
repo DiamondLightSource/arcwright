@@ -55,7 +55,8 @@ packages = ["src/arcwright"]
 dependencies = [
   "mkdocs",
   "mkdocstrings-python",
-  "mkdocs-material"
+  "mkdocs-material",
+  "jinja < 3.1.0",
 ]
 
 [tool.hatch.envs.docs.scripts]
