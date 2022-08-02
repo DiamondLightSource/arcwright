@@ -5,6 +5,7 @@ Test the internally used methods
 from pytest import approx
 import pytest
 import numpy as np
+import random
 from arcwright.arcwright import ArcFAI
 
 
@@ -189,12 +190,41 @@ def test_cos_incidence():
     test that the cos_incidence method returns something sensible looking
     """
     arcfai = ArcFAI()
-    x = np.arange(256)
-    y = np.arange(768)
-    YY, XX = np.meshgrid(y, x)
-    cos_incidence = arcfai.cos_incidence((XX, YY), tth=0)
+    cos_incidence = arcfai.cos_incidence(0)
+    assert cos_incidence.shape == (6604, 768)
     assert np.nanmin(cos_incidence) > 0.99
-    assert cos_incidence.shape == YY.shape
+    assert np.nanmax(cos_incidence) == approx(1)
+
+
+def test_cos_incidence_extreme():
+    """
+    test the cos_incidence method returns smaller numbers when the panels are rotated
+    """
+    n_modules = range(24)
+    json_blob = {}
+    json_blob["wavelength"] = 0.17
+    json_blob["param_common"] = {"scale": 1.0000000353397727, "nrj": 76.69}
+    json_blob["goniometers"] = {}
+    dist = [0.25 for _ in n_modules]
+    poni1 = [-i / 50 for i in n_modules]
+    poni2 = [-i / 50 for i in n_modules]
+    rot1 = [0.0 for _ in n_modules]
+    offset = [-5 * i + random.random() / 5 for i in n_modules]
+    for i in n_modules:
+        json_blob["goniometers"][f"test_{i}"] = {
+            "dist": dist[i],
+            "poni1": poni1[i],
+            "poni2": poni2[i],
+            "rot1": rot1[i],
+            "offset": offset[i],
+        }
+    arcfai = ArcFAI(from_json=json_blob)
+    cos_incidence = arcfai.cos_incidence(0)
+    cos_incidence_list = arcfai.get_module_imgs_from_img(cos_incidence)
+    mean_cos_incidence = [r.mean() for r in cos_incidence_list]
+    assert all(
+        [mean_cos_incidence[i] < mean_cos_incidence[i - 1] for i in range(1, 24)]
+    )
 
 
 def test_image_conversion():
