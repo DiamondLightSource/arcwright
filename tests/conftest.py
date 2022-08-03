@@ -2,6 +2,7 @@ import os
 import pytest
 import shutil
 import errno
+import numpy as np
 from arcwright.arcwright import ArcFAI, ArcModule
 
 
@@ -46,3 +47,11 @@ def data_directory(tmp_path, request):
         shutil.copytree(test_dir, tmp_path)
 
     return tmp_path
+
+
+@pytest.fixture
+def default_arcfai_ones():
+    data = np.ones((6604, 768))
+    arcfai = ArcFAI()
+    arcfai.add_imgs_to_goniometer_refinements([data], [0])
+    return arcfai
