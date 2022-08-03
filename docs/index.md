@@ -9,7 +9,7 @@ Heavily based on [pyFAI](https://pyfai.readthedocs.io/en/master/).
 or use within your python application
 ```
 from arcwright import arcwright
-arcfai = arcwight.ArcFAI()
+arcfai = arcwright.ArcFAI()
 ```
 ## Project layout
 
