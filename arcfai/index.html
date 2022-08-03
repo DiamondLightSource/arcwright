@@ -8,6 +8,8 @@
       
       
       
+        <link rel="canonical" href="https://diamondlightsource.github.io/arcwright/arcfai/">
+      
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
@@ -291,6 +293,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#arcwright.arcwright.ArcFAI.add_imgs_to_goniometer_refinements" class="md-nav__link">
+    add_imgs_to_goniometer_refinements()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#arcwright.arcwright.ArcFAI.calc_pos_zyx" class="md-nav__link">
     calc_pos_zyx()
   </a>
@@ -300,13 +309,6 @@
         <li class="md-nav__item">
   <a href="#arcwright.arcwright.ArcFAI.chi2" class="md-nav__link">
     chi2()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arcwright.arcwright.ArcFAI.cos_incidence" class="md-nav__link">
-    cos_incidence()
   </a>
   
 </li>
@@ -423,6 +425,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#arcwright.arcwright.ArcFAI.add_imgs_to_goniometer_refinements" class="md-nav__link">
+    add_imgs_to_goniometer_refinements()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#arcwright.arcwright.ArcFAI.calc_pos_zyx" class="md-nav__link">
     calc_pos_zyx()
   </a>
@@ -432,13 +441,6 @@
         <li class="md-nav__item">
   <a href="#arcwright.arcwright.ArcFAI.chi2" class="md-nav__link">
     chi2()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arcwright.arcwright.ArcFAI.cos_incidence" class="md-nav__link">
-    cos_incidence()
   </a>
   
 </li>
@@ -548,8 +550,7 @@
 
         <details class="quote">
           <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 39</span>
-<span class="normal"> 40</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 40</span>
 <span class="normal"> 41</span>
 <span class="normal"> 42</span>
 <span class="normal"> 43</span>
@@ -1250,7 +1251,81 @@
 <span class="normal">738</span>
 <span class="normal">739</span>
 <span class="normal">740</span>
-<span class="normal">741</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ArcFAI</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="normal">741</span>
+<span class="normal">742</span>
+<span class="normal">743</span>
+<span class="normal">744</span>
+<span class="normal">745</span>
+<span class="normal">746</span>
+<span class="normal">747</span>
+<span class="normal">748</span>
+<span class="normal">749</span>
+<span class="normal">750</span>
+<span class="normal">751</span>
+<span class="normal">752</span>
+<span class="normal">753</span>
+<span class="normal">754</span>
+<span class="normal">755</span>
+<span class="normal">756</span>
+<span class="normal">757</span>
+<span class="normal">758</span>
+<span class="normal">759</span>
+<span class="normal">760</span>
+<span class="normal">761</span>
+<span class="normal">762</span>
+<span class="normal">763</span>
+<span class="normal">764</span>
+<span class="normal">765</span>
+<span class="normal">766</span>
+<span class="normal">767</span>
+<span class="normal">768</span>
+<span class="normal">769</span>
+<span class="normal">770</span>
+<span class="normal">771</span>
+<span class="normal">772</span>
+<span class="normal">773</span>
+<span class="normal">774</span>
+<span class="normal">775</span>
+<span class="normal">776</span>
+<span class="normal">777</span>
+<span class="normal">778</span>
+<span class="normal">779</span>
+<span class="normal">780</span>
+<span class="normal">781</span>
+<span class="normal">782</span>
+<span class="normal">783</span>
+<span class="normal">784</span>
+<span class="normal">785</span>
+<span class="normal">786</span>
+<span class="normal">787</span>
+<span class="normal">788</span>
+<span class="normal">789</span>
+<span class="normal">790</span>
+<span class="normal">791</span>
+<span class="normal">792</span>
+<span class="normal">793</span>
+<span class="normal">794</span>
+<span class="normal">795</span>
+<span class="normal">796</span>
+<span class="normal">797</span>
+<span class="normal">798</span>
+<span class="normal">799</span>
+<span class="normal">800</span>
+<span class="normal">801</span>
+<span class="normal">802</span>
+<span class="normal">803</span>
+<span class="normal">804</span>
+<span class="normal">805</span>
+<span class="normal">806</span>
+<span class="normal">807</span>
+<span class="normal">808</span>
+<span class="normal">809</span>
+<span class="normal">810</span>
+<span class="normal">811</span>
+<span class="normal">812</span>
+<span class="normal">813</span>
+<span class="normal">814</span>
+<span class="normal">815</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ArcFAI</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">dist</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
@@ -1274,15 +1349,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pixel_pad_size</span> <span class="o">=</span> <span class="n">pixel_pad_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_modules</span> <span class="o">=</span> <span class="n">n_modules</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">module_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;module_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_modules</span><span class="p">)]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">module_approx_tths</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;module_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">tth_offset</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">tth_offset_between_modules</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_modules</span><span class="p">)</span>
-        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tth_offset</span> <span class="o">=</span> <span class="n">tth_offset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tth_offset_between_modules</span> <span class="o">=</span> <span class="n">tth_offset_between_modules</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">module_approx_tths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_approx_tth_values</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">modules</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">goniometers</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">param_names_split</span> <span class="o">=</span> <span class="n">param_names_split</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">param_names_common</span> <span class="o">=</span> <span class="n">param_names_common</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_tth_for_get_pts_per_deg</span> <span class="o">=</span> <span class="mf">180.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tth_values</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="n">unitsdict</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s2">&quot;q_A^-1&quot;</span><span class="p">,</span>
@@ -1573,17 +1648,30 @@
                     <span class="p">)</span>
                 <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">add_imgs_to_goniometer_refinements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">imgs</span><span class="p">,</span> <span class="n">tths</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_imgs_to_goniometer_refinements</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">imgs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">],</span> <span class="n">tths</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Add one or multiple images.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            imgs: list of image data to add.</span>
+<span class="sd">            tths: list of two theta values</span>
+<span class="sd">            verbose: increase output verboscity</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tths</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;must provide same number of images and tth values&quot;</span><span class="p">)</span>
         <span class="n">mod_imgs</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">tth</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_imgs_from_img</span><span class="p">(</span><span class="n">imgs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tth</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tths</span><span class="p">)</span>
         <span class="p">}</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tth_values</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module_names</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">tth</span> <span class="ow">in</span> <span class="n">tths</span><span class="p">:</span>
                 <span class="n">sg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">goniometers</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span><span class="o">.</span><span class="n">new_geometry</span><span class="p">(</span>
-                    <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_tth</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">tth</span><span class="p">),</span>
+                    <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_tth</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
                     <span class="n">image</span><span class="o">=</span><span class="n">mod_imgs</span><span class="p">[</span><span class="n">tth</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
                     <span class="n">metadata</span><span class="o">=</span><span class="n">tth</span><span class="p">,</span>
                 <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tth_values</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tths</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">extract_cps_from_sgs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">withPlot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">max_tth_for_get_pts_per_deg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">max_tth_for_get_pts_per_deg</span><span class="p">:</span>
@@ -1604,23 +1692,32 @@
 
     <span class="k">def</span> <span class="nf">integrate1d</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">radial_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span>
-        <span class="n">npt</span><span class="o">=</span><span class="mi">9000</span><span class="p">,</span>
-        <span class="n">separateModules</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">empty_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-        <span class="n">polarization_factor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">normalization_factor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">flat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">splitpixel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">radial_range</span><span class="p">:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span>
+        <span class="n">npt</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">9000</span><span class="p">,</span>
+        <span class="n">separateModules</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">empty_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+        <span class="n">polarization_factor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">normalization_factor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ArrayLike</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">flat</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ArrayLike</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">splitpixel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">correctSolidAngle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Integrate1dResult</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Integrate1dResult</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Performs an integration for any data currently added to the ArcCalibrator object</span>
-
-<span class="sd">        Documentation copied from multi_geometry.py...</span>
-<span class="sd">        :param polarization_factor:  Apply polarization correction ? is None: not applies. Else provide a value from -1 to +1</span>
-<span class="sd">        :param normalization_factor: normalization monitors value (list of floats)</span>
-<span class="sd">        :param mask: numpy.Array or list of numpy.array which mask the lst_data.</span>
-<span class="sd">        :param flat: numpy.Array or list of numpy.array which flat the lst_data.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            radial_range: The radial range over which to integrate the data</span>
+<span class="sd">            npt: The number of histogram bins into which the data are integrated</span>
+<span class="sd">            separateModules: Whether to return the dictionary of modular results as well as the overall result</span>
+<span class="sd">            empty_value: The value to return for a bin with no coverage</span>
+<span class="sd">            polarization_factor: Apply polarization correction ? None: not applies. Else provide a value from -1 to +1</span>
+<span class="sd">            normalization_factor: normalization monitors value</span>
+<span class="sd">            mask: mask or list of masks to apply during the integration</span>
+<span class="sd">            flat: flat or list of flats to apply during the integration</span>
+<span class="sd">            splitpixel: whether to use splitpixel method or cython</span>
+<span class="sd">            correctSolidAngle: whether to apply a solid angle correction</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            res: the result of the integration</span>
+<span class="sd">            result_dict: the individual modular results</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_imgs_dict_from_img</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
         <span class="n">flat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_imgs_dict_from_img</span><span class="p">(</span><span class="n">flat</span><span class="p">)</span>
@@ -1642,29 +1739,47 @@
                     <span class="n">mask</span><span class="p">[</span><span class="n">module_name</span><span class="p">],</span>
                     <span class="n">flat</span><span class="p">[</span><span class="n">module_name</span><span class="p">],</span>
                     <span class="n">splitpixel</span><span class="p">,</span>
+                    <span class="n">correctSolidAngle</span><span class="p">,</span>
+                    <span class="kc">None</span><span class="p">,</span>
                 <span class="p">],</span>
             <span class="p">)</span>
             <span class="n">process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
             <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">process</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">process</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
             <span class="n">process</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module_names</span><span class="p">):</span>
+
+        <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">npt</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">normalization</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">module_names</span><span class="p">:</span>
             <span class="n">res_mg</span> <span class="o">=</span> <span class="n">result_dict</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">summed</span> <span class="o">=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">sum</span>
-                <span class="n">counted</span> <span class="o">=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">count</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">summed</span> <span class="o">+=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">sum</span>
-                <span class="n">counted</span> <span class="o">+=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">count</span>
-            <span class="n">radial</span> <span class="o">=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">radial</span>
+            <span class="n">signal</span> <span class="o">+=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">sum_signal</span>
+            <span class="n">normalization</span> <span class="o">+=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">sum_normalization</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">count</span>
+
+        <span class="n">radial</span> <span class="o">=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">radial</span>
+
+        <span class="n">tiny</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">tiny</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">normalization</span><span class="p">,</span> <span class="n">tiny</span><span class="p">)</span>
+
+        <span class="n">invalid</span> <span class="o">=</span> <span class="n">count</span> <span class="o">&lt;=</span> <span class="mf">0.0</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">signal</span> <span class="o">/</span> <span class="n">norm</span>
+        <span class="n">I</span><span class="p">[</span><span class="n">invalid</span><span class="p">]</span> <span class="o">=</span> <span class="n">empty_value</span>
+
+        <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">I</span><span class="p">)</span> <span class="o">/</span> <span class="n">norm</span>
+        <span class="n">sigma</span><span class="p">[</span><span class="n">invalid</span><span class="p">]</span> <span class="o">=</span> <span class="n">empty_value</span>
+
         <span class="n">res</span> <span class="o">=</span> <span class="n">Integrate1dResult</span><span class="p">(</span>
             <span class="n">radial</span><span class="p">,</span>
-            <span class="n">summed</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">counted</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">),</span>
-            <span class="p">(</span><span class="n">summed</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">counted</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">),</span>
+            <span class="n">I</span><span class="p">,</span>
+            <span class="n">sigma</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="n">res</span><span class="o">.</span><span class="n">_set_unit</span><span class="p">(</span><span class="n">res_mg</span><span class="o">.</span><span class="n">unit</span><span class="p">)</span>
-        <span class="n">res</span><span class="o">.</span><span class="n">_set_count</span><span class="p">(</span><span class="n">counted</span><span class="p">)</span>
-        <span class="n">res</span><span class="o">.</span><span class="n">_set_sum</span><span class="p">(</span><span class="n">summed</span><span class="p">)</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">_set_compute_engine</span><span class="p">(</span><span class="n">res_mg</span><span class="o">.</span><span class="n">compute_engine</span><span class="p">)</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">_set_unit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">)</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">_set_sum_signal</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">_set_sum_normalization</span><span class="p">(</span><span class="n">normalization</span><span class="p">)</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">_set_count</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="n">separateModules</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">res</span><span class="p">,</span> <span class="n">result_dict</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1683,6 +1798,8 @@
         <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">flat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">splitpixel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">correctSolidAngle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">lst_variance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="n">angles</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">sg</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span>
@@ -1703,8 +1820,8 @@
         <span class="n">result_dict</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">multigeo</span><span class="o">.</span><span class="n">integrate1d</span><span class="p">(</span>
             <span class="n">images</span><span class="p">,</span>
             <span class="n">npt</span><span class="p">,</span>
-            <span class="n">correctSolidAngle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">lst_variance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">correctSolidAngle</span><span class="o">=</span><span class="n">correctSolidAngle</span><span class="p">,</span>
+            <span class="n">lst_variance</span><span class="o">=</span><span class="n">lst_variance</span><span class="p">,</span>
             <span class="n">error_model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">polarization_factor</span><span class="o">=</span><span class="n">polarization_factor</span><span class="p">,</span>
             <span class="n">normalization_factor</span><span class="o">=</span><span class="n">normalization_factor</span><span class="p">,</span>
@@ -1850,7 +1967,9 @@
         <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get_img_from_module_imgs</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">padvalue</span><span class="p">)</span> <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">imgs</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">solidAngleArray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;absolute&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getPyFaiArray</span><span class="p">(</span><span class="n">tths</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;solidAngleArray&quot;</span><span class="p">,</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">padvalue</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getPyFaiArray</span><span class="p">(</span>
+            <span class="n">tths</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;solidAngleArray&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">padvalue</span>
+        <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">chiArray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getPyFaiArray</span><span class="p">(</span><span class="n">tths</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;chiArray&quot;</span><span class="p">,</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">padvalue</span><span class="p">)</span>
@@ -1881,10 +2000,17 @@
         <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># [self.get_img_from_module_imgs(z),self.get_img_from_module_imgs(y),self.get_img_from_module_imgs(x)]</span>
 
     <span class="k">def</span> <span class="nf">cos_incidence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tth</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;cython&quot;</span><span class="p">,</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;WORK IN PROGRESS! gives a lot of warnings about bilinear:Netagive index along dim1 or dim2 etc.&quot;&quot;&quot;</span>
-        <span class="c1"># zyx = self.calc_pos_zyx(tth)</span>
-        <span class="c1"># imgs = [self.goniometers[module_name].get_mg([tth]).ais[0].cos_incidence(zyx[1], zyx[2], path=path) for module_name in self.module_names]</span>
-        <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># self.get_img_from_module_imgs(imgs,padvalue=padvalue)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">YY</span><span class="p">,</span> <span class="n">XX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">imgs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">goniometers</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">get_mg</span><span class="p">([</span><span class="n">tth</span><span class="p">])</span>
+            <span class="o">.</span><span class="n">ais</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">cos_incidence</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">YY</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">module_names</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_img_from_module_imgs</span><span class="p">(</span><span class="n">imgs</span><span class="p">,</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">padvalue</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Creates a json object representating the ArcCalibrator object parameters</span>
@@ -1917,6 +2043,25 @@
                 <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_dict</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">json_dict</span>
 
+    <span class="k">def</span> <span class="nf">_clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Clear the stored modules, goniometers, tth values.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modules</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goniometers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">module_approx_tths</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_modules</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">module_names</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">_calculate_approx_tth_values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Calculates the approx tth values using the tth_offset_between_modules</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            dictionary mapping module names to approximate tth values</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;module_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">tth_offset</span>
+            <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">tth_offset_between_modules</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_modules</span><span class="p">)</span>
+        <span class="p">}</span>
+
     <span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">injson</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">nrj</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Populates an ArcCalibrator object with parameters from a json file.</span>
 
@@ -1946,13 +2091,16 @@
                 <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">nrj</span> <span class="o">=</span> <span class="n">nrj</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">wavelength</span> <span class="o">=</span> <span class="p">(</span><span class="n">hc</span> <span class="o">/</span> <span class="n">nrj</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-10</span>
-        <span class="k">for</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;goniometers&quot;</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_modules</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;goniometers&quot;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">module_name</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;goniometers&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">module_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ArcModule</span><span class="p">()</span>
-            <span class="n">param</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;goniometers&quot;</span><span class="p">][</span><span class="n">module_name</span><span class="p">]</span>
             <span class="n">param</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;param_common&quot;</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">goniometers</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_module_goiniometer</span><span class="p">(</span>
                 <span class="n">module_name</span><span class="p">,</span> <span class="n">param</span>
             <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">module_approx_tths</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;offset&quot;</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -1967,6 +2115,119 @@
 
 
 
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="arcwright.arcwright.ArcFAI.add_imgs_to_goniometer_refinements" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_imgs_to_goniometer_refinements</span><span class="p">(</span><span class="n">imgs</span><span class="p">,</span> <span class="n">tths</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Add one or multiple images.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>imgs</code></td>
+          <td>
+                <code>list[<span title="numpy.typing.ArrayLike">ArrayLike</span>]</code>
+          </td>
+          <td><p>list of image data to add.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>tths</code></td>
+          <td>
+                <code>list[float]</code>
+          </td>
+          <td><p>list of two theta values</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>verbose</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[bool]</code>
+          </td>
+          <td><p>increase output verboscity</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>arcwright/arcwright.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_imgs_to_goniometer_refinements</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">imgs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">],</span> <span class="n">tths</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Add one or multiple images.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        imgs: list of image data to add.</span>
+<span class="sd">        tths: list of two theta values</span>
+<span class="sd">        verbose: increase output verboscity</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tths</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;must provide same number of images and tth values&quot;</span><span class="p">)</span>
+    <span class="n">mod_imgs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">tth</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_imgs_from_img</span><span class="p">(</span><span class="n">imgs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tth</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tths</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tth_values</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module_names</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">tth</span> <span class="ow">in</span> <span class="n">tths</span><span class="p">:</span>
+            <span class="n">sg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">goniometers</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span><span class="o">.</span><span class="n">new_geometry</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_tth</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">mod_imgs</span><span class="p">[</span><span class="n">tth</span><span class="p">][</span><span class="n">i</span><span class="p">],</span>
+                <span class="n">metadata</span><span class="o">=</span><span class="n">tth</span><span class="p">,</span>
+            <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">tth_values</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tths</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
 
 <div class="doc doc-object doc-function">
 
@@ -1991,24 +2252,24 @@
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">650</span>
-<span class="normal">651</span>
-<span class="normal">652</span>
-<span class="normal">653</span>
-<span class="normal">654</span>
-<span class="normal">655</span>
-<span class="normal">656</span>
-<span class="normal">657</span>
-<span class="normal">658</span>
-<span class="normal">659</span>
-<span class="normal">660</span>
-<span class="normal">661</span>
-<span class="normal">662</span>
-<span class="normal">663</span>
-<span class="normal">664</span>
-<span class="normal">665</span>
-<span class="normal">666</span>
-<span class="normal">667</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calc_pos_zyx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">corners</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">695</span>
+<span class="normal">696</span>
+<span class="normal">697</span>
+<span class="normal">698</span>
+<span class="normal">699</span>
+<span class="normal">700</span>
+<span class="normal">701</span>
+<span class="normal">702</span>
+<span class="normal">703</span>
+<span class="normal">704</span>
+<span class="normal">705</span>
+<span class="normal">706</span>
+<span class="normal">707</span>
+<span class="normal">708</span>
+<span class="normal">709</span>
+<span class="normal">710</span>
+<span class="normal">711</span>
+<span class="normal">712</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calc_pos_zyx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">corners</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculates arrays for z, y and x positions of each pixel, padded for gaps between detectors</span>
 
 <span class="sd">    :param tth:      float, 2theta value (in degrees) at which to generate the array</span>
@@ -2052,8 +2313,7 @@
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">262</span>
-<span class="normal">263</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">263</span>
 <span class="normal">264</span>
 <span class="normal">265</span>
 <span class="normal">266</span>
@@ -2063,7 +2323,8 @@
 <span class="normal">270</span>
 <span class="normal">271</span>
 <span class="normal">272</span>
-<span class="normal">273</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">chi2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">273</span>
+<span class="normal">274</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">chi2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculates the average of the square of the error for a given parameter set</span>
 
 <span class="sd">    :param param: dict, parameters dictionary for an ArcCalibrator object</span>
@@ -2075,37 +2336,6 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">residu2</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">residu2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="arcwright.arcwright.ArcFAI.cos_incidence" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">cos_incidence</span><span class="p">(</span><span class="n">tth</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s1">&#39;cython&#39;</span><span class="p">,</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>WORK IN PROGRESS! gives a lot of warnings about bilinear:Netagive index along dim1 or dim2 etc.</p>
-
-      <details class="quote">
-        <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">669</span>
-<span class="normal">670</span>
-<span class="normal">671</span>
-<span class="normal">672</span>
-<span class="normal">673</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">cos_incidence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tth</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;cython&quot;</span><span class="p">,</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;WORK IN PROGRESS! gives a lot of warnings about bilinear:Netagive index along dim1 or dim2 etc.&quot;&quot;&quot;</span>
-    <span class="c1"># zyx = self.calc_pos_zyx(tth)</span>
-    <span class="c1"># imgs = [self.goniometers[module_name].get_mg([tth]).ais[0].cos_incidence(zyx[1], zyx[2], path=path) for module_name in self.module_names]</span>
-    <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># self.get_img_from_module_imgs(imgs,padvalue=padvalue)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -2162,42 +2392,45 @@
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">706</span>
-<span class="normal">707</span>
-<span class="normal">708</span>
-<span class="normal">709</span>
-<span class="normal">710</span>
-<span class="normal">711</span>
-<span class="normal">712</span>
-<span class="normal">713</span>
-<span class="normal">714</span>
-<span class="normal">715</span>
-<span class="normal">716</span>
-<span class="normal">717</span>
-<span class="normal">718</span>
-<span class="normal">719</span>
-<span class="normal">720</span>
-<span class="normal">721</span>
-<span class="normal">722</span>
-<span class="normal">723</span>
-<span class="normal">724</span>
-<span class="normal">725</span>
-<span class="normal">726</span>
-<span class="normal">727</span>
-<span class="normal">728</span>
-<span class="normal">729</span>
-<span class="normal">730</span>
-<span class="normal">731</span>
-<span class="normal">732</span>
-<span class="normal">733</span>
-<span class="normal">734</span>
-<span class="normal">735</span>
-<span class="normal">736</span>
-<span class="normal">737</span>
-<span class="normal">738</span>
-<span class="normal">739</span>
-<span class="normal">740</span>
-<span class="normal">741</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">injson</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">nrj</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">777</span>
+<span class="normal">778</span>
+<span class="normal">779</span>
+<span class="normal">780</span>
+<span class="normal">781</span>
+<span class="normal">782</span>
+<span class="normal">783</span>
+<span class="normal">784</span>
+<span class="normal">785</span>
+<span class="normal">786</span>
+<span class="normal">787</span>
+<span class="normal">788</span>
+<span class="normal">789</span>
+<span class="normal">790</span>
+<span class="normal">791</span>
+<span class="normal">792</span>
+<span class="normal">793</span>
+<span class="normal">794</span>
+<span class="normal">795</span>
+<span class="normal">796</span>
+<span class="normal">797</span>
+<span class="normal">798</span>
+<span class="normal">799</span>
+<span class="normal">800</span>
+<span class="normal">801</span>
+<span class="normal">802</span>
+<span class="normal">803</span>
+<span class="normal">804</span>
+<span class="normal">805</span>
+<span class="normal">806</span>
+<span class="normal">807</span>
+<span class="normal">808</span>
+<span class="normal">809</span>
+<span class="normal">810</span>
+<span class="normal">811</span>
+<span class="normal">812</span>
+<span class="normal">813</span>
+<span class="normal">814</span>
+<span class="normal">815</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">injson</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">nrj</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Populates an ArcCalibrator object with parameters from a json file.</span>
 
 <span class="sd">    Args:</span>
@@ -2226,13 +2459,16 @@
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nrj</span> <span class="o">=</span> <span class="n">nrj</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wavelength</span> <span class="o">=</span> <span class="p">(</span><span class="n">hc</span> <span class="o">/</span> <span class="n">nrj</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-10</span>
-    <span class="k">for</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;goniometers&quot;</span><span class="p">]:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_clear</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">n_modules</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;goniometers&quot;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">module_name</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;goniometers&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">module_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ArcModule</span><span class="p">()</span>
-        <span class="n">param</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;goniometers&quot;</span><span class="p">][</span><span class="n">module_name</span><span class="p">]</span>
         <span class="n">param</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;param_common&quot;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">goniometers</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_module_goiniometer</span><span class="p">(</span>
             <span class="n">module_name</span><span class="p">,</span> <span class="n">param</span>
         <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">module_approx_tths</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">param</span><span class="p">[</span><span class="s2">&quot;offset&quot;</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -2261,27 +2497,27 @@
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">616</span>
-<span class="normal">617</span>
-<span class="normal">618</span>
-<span class="normal">619</span>
-<span class="normal">620</span>
-<span class="normal">621</span>
-<span class="normal">622</span>
-<span class="normal">623</span>
-<span class="normal">624</span>
-<span class="normal">625</span>
-<span class="normal">626</span>
-<span class="normal">627</span>
-<span class="normal">628</span>
-<span class="normal">629</span>
-<span class="normal">630</span>
-<span class="normal">631</span>
-<span class="normal">632</span>
-<span class="normal">633</span>
-<span class="normal">634</span>
-<span class="normal">635</span>
-<span class="normal">636</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getPyFaiArray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;chiArray&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{},</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">659</span>
+<span class="normal">660</span>
+<span class="normal">661</span>
+<span class="normal">662</span>
+<span class="normal">663</span>
+<span class="normal">664</span>
+<span class="normal">665</span>
+<span class="normal">666</span>
+<span class="normal">667</span>
+<span class="normal">668</span>
+<span class="normal">669</span>
+<span class="normal">670</span>
+<span class="normal">671</span>
+<span class="normal">672</span>
+<span class="normal">673</span>
+<span class="normal">674</span>
+<span class="normal">675</span>
+<span class="normal">676</span>
+<span class="normal">677</span>
+<span class="normal">678</span>
+<span class="normal">679</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getPyFaiArray</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;chiArray&quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{},</span> <span class="n">padvalue</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Produce a single image, padded for gaps between detectors, for a requested pyFAI ai method</span>
 
 <span class="sd">    :param tth:      float, 2theta value (in degrees) at which to generate the array</span>
@@ -2326,21 +2562,21 @@
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">585</span>
-<span class="normal">586</span>
-<span class="normal">587</span>
-<span class="normal">588</span>
-<span class="normal">589</span>
-<span class="normal">590</span>
-<span class="normal">591</span>
-<span class="normal">592</span>
-<span class="normal">593</span>
-<span class="normal">594</span>
-<span class="normal">595</span>
-<span class="normal">596</span>
-<span class="normal">597</span>
-<span class="normal">598</span>
-<span class="normal">599</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_module_imgs_from_img</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">628</span>
+<span class="normal">629</span>
+<span class="normal">630</span>
+<span class="normal">631</span>
+<span class="normal">632</span>
+<span class="normal">633</span>
+<span class="normal">634</span>
+<span class="normal">635</span>
+<span class="normal">636</span>
+<span class="normal">637</span>
+<span class="normal">638</span>
+<span class="normal">639</span>
+<span class="normal">640</span>
+<span class="normal">641</span>
+<span class="normal">642</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_module_imgs_from_img</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns separate images for each module from a single image which has padded gaps between the modules</span>
 <span class="sd">    :param img: A single 2D array image from the arc detector with padded gaps of self.pixel_pad_size between each module</span>
 <span class="sd">    :return:    Array of n 2D images representing each of the n modules</span>
@@ -2377,14 +2613,14 @@
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">216</span>
-<span class="normal">217</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
 <span class="normal">220</span>
 <span class="normal">221</span>
 <span class="normal">222</span>
-<span class="normal">223</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_pts_per_deg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tth</span><span class="p">):</span>
+<span class="normal">223</span>
+<span class="normal">224</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_pts_per_deg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tth</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Function to determine a sensible number of points to extract per ring on each module&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">tth</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_tth_for_get_pts_per_deg</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
@@ -2403,7 +2639,7 @@
 
 
 <h2 id="arcwright.arcwright.ArcFAI.integrate1d" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">integrate1d</span><span class="p">(</span><span class="n">radial_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="n">npt</span><span class="o">=</span><span class="mi">9000</span><span class="p">,</span> <span class="n">separateModules</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">polarization_factor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalization_factor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">splitpixel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">integrate1d</span><span class="p">(</span><span class="n">radial_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="n">npt</span><span class="o">=</span><span class="mi">9000</span><span class="p">,</span> <span class="n">separateModules</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">polarization_factor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalization_factor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">splitpixel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">correctSolidAngle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h2>
 
@@ -2411,29 +2647,148 @@
   <div class="doc doc-contents ">
   
       <p>Performs an integration for any data currently added to the ArcCalibrator object</p>
-<p>Documentation copied from multi_geometry.py...
-:param polarization_factor:  Apply polarization correction ? is None: not applies. Else provide a value from -1 to +1
-:param normalization_factor: normalization monitors value (list of floats)
-:param mask: numpy.Array or list of numpy.array which mask the lst_data.
-:param flat: numpy.Array or list of numpy.array which flat the lst_data.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>radial_range</code></td>
+          <td>
+                <code>tuple</code>
+          </td>
+          <td><p>The radial range over which to integrate the data</p></td>
+          <td>
+                <code>(0, 90)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>npt</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>The number of histogram bins into which the data are integrated</p></td>
+          <td>
+                <code>9000</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>separateModules</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>Whether to return the dictionary of modular results as well as the overall result</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>empty_value</code></td>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>The value to return for a bin with no coverage</p></td>
+          <td>
+                <code>np.nan</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>polarization_factor</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[float]</code>
+          </td>
+          <td><p>Apply polarization correction ? None: not applies. Else provide a value from -1 to +1</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>normalization_factor</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[float | list[float]]</code>
+          </td>
+          <td><p>normalization monitors value</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>mask</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="numpy.typing.ArrayLike">ArrayLike</span> | list[<span title="numpy.typing.ArrayLike">ArrayLike</span>]]</code>
+          </td>
+          <td><p>mask or list of masks to apply during the integration</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>flat</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[<span title="numpy.typing.ArrayLike">ArrayLike</span> | list[<span title="numpy.typing.ArrayLike">ArrayLike</span>]]</code>
+          </td>
+          <td><p>flat or list of flats to apply during the integration</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>splitpixel</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>whether to use splitpixel method or cython</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>correctSolidAngle</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>whether to apply a solid angle correction</p></td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>res</code></td>          <td>
+                <code><span title="pyFAI.containers.Integrate1dResult">Integrate1dResult</span> | tuple[<span title="pyFAI.containers.Integrate1dResult">Integrate1dResult</span>, dict]</code>
+          </td>
+          <td><p>the result of the integration</p></td>
+        </tr>
+        <tr>
+<td><code>result_dict</code></td>          <td>
+                <code><span title="pyFAI.containers.Integrate1dResult">Integrate1dResult</span> | tuple[<span title="pyFAI.containers.Integrate1dResult">Integrate1dResult</span>, dict]</code>
+          </td>
+          <td><p>the individual modular results</p></td>
+        </tr>
+    </tbody>
+  </table>
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">391</span>
-<span class="normal">392</span>
-<span class="normal">393</span>
-<span class="normal">394</span>
-<span class="normal">395</span>
-<span class="normal">396</span>
-<span class="normal">397</span>
-<span class="normal">398</span>
-<span class="normal">399</span>
-<span class="normal">400</span>
-<span class="normal">401</span>
-<span class="normal">402</span>
-<span class="normal">403</span>
-<span class="normal">404</span>
-<span class="normal">405</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">405</span>
 <span class="normal">406</span>
 <span class="normal">407</span>
 <span class="normal">408</span>
@@ -2485,25 +2840,75 @@
 <span class="normal">454</span>
 <span class="normal">455</span>
 <span class="normal">456</span>
-<span class="normal">457</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">integrate1d</span><span class="p">(</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">integrate1d</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">radial_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span>
-    <span class="n">npt</span><span class="o">=</span><span class="mi">9000</span><span class="p">,</span>
-    <span class="n">separateModules</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">empty_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-    <span class="n">polarization_factor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">normalization_factor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">flat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">splitpixel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">):</span>
+    <span class="n">radial_range</span><span class="p">:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span>
+    <span class="n">npt</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">9000</span><span class="p">,</span>
+    <span class="n">separateModules</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">empty_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+    <span class="n">polarization_factor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">normalization_factor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ArrayLike</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">flat</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ArrayLike</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">splitpixel</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">correctSolidAngle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Integrate1dResult</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Integrate1dResult</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Performs an integration for any data currently added to the ArcCalibrator object</span>
-
-<span class="sd">    Documentation copied from multi_geometry.py...</span>
-<span class="sd">    :param polarization_factor:  Apply polarization correction ? is None: not applies. Else provide a value from -1 to +1</span>
-<span class="sd">    :param normalization_factor: normalization monitors value (list of floats)</span>
-<span class="sd">    :param mask: numpy.Array or list of numpy.array which mask the lst_data.</span>
-<span class="sd">    :param flat: numpy.Array or list of numpy.array which flat the lst_data.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        radial_range: The radial range over which to integrate the data</span>
+<span class="sd">        npt: The number of histogram bins into which the data are integrated</span>
+<span class="sd">        separateModules: Whether to return the dictionary of modular results as well as the overall result</span>
+<span class="sd">        empty_value: The value to return for a bin with no coverage</span>
+<span class="sd">        polarization_factor: Apply polarization correction ? None: not applies. Else provide a value from -1 to +1</span>
+<span class="sd">        normalization_factor: normalization monitors value</span>
+<span class="sd">        mask: mask or list of masks to apply during the integration</span>
+<span class="sd">        flat: flat or list of flats to apply during the integration</span>
+<span class="sd">        splitpixel: whether to use splitpixel method or cython</span>
+<span class="sd">        correctSolidAngle: whether to apply a solid angle correction</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        res: the result of the integration</span>
+<span class="sd">        result_dict: the individual modular results</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_imgs_dict_from_img</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
     <span class="n">flat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_module_imgs_dict_from_img</span><span class="p">(</span><span class="n">flat</span><span class="p">)</span>
@@ -2525,29 +2930,47 @@
                 <span class="n">mask</span><span class="p">[</span><span class="n">module_name</span><span class="p">],</span>
                 <span class="n">flat</span><span class="p">[</span><span class="n">module_name</span><span class="p">],</span>
                 <span class="n">splitpixel</span><span class="p">,</span>
+                <span class="n">correctSolidAngle</span><span class="p">,</span>
+                <span class="kc">None</span><span class="p">,</span>
             <span class="p">],</span>
         <span class="p">)</span>
         <span class="n">process</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
         <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">process</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">process</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
         <span class="n">process</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">module_names</span><span class="p">):</span>
+
+    <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">npt</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">normalization</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">module_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">module_names</span><span class="p">:</span>
         <span class="n">res_mg</span> <span class="o">=</span> <span class="n">result_dict</span><span class="p">[</span><span class="n">module_name</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">summed</span> <span class="o">=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">sum</span>
-            <span class="n">counted</span> <span class="o">=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">count</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">summed</span> <span class="o">+=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">sum</span>
-            <span class="n">counted</span> <span class="o">+=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">count</span>
-        <span class="n">radial</span> <span class="o">=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">radial</span>
+        <span class="n">signal</span> <span class="o">+=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">sum_signal</span>
+        <span class="n">normalization</span> <span class="o">+=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">sum_normalization</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">count</span>
+
+    <span class="n">radial</span> <span class="o">=</span> <span class="n">res_mg</span><span class="o">.</span><span class="n">radial</span>
+
+    <span class="n">tiny</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">tiny</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">normalization</span><span class="p">,</span> <span class="n">tiny</span><span class="p">)</span>
+
+    <span class="n">invalid</span> <span class="o">=</span> <span class="n">count</span> <span class="o">&lt;=</span> <span class="mf">0.0</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">signal</span> <span class="o">/</span> <span class="n">norm</span>
+    <span class="n">I</span><span class="p">[</span><span class="n">invalid</span><span class="p">]</span> <span class="o">=</span> <span class="n">empty_value</span>
+
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">I</span><span class="p">)</span> <span class="o">/</span> <span class="n">norm</span>
+    <span class="n">sigma</span><span class="p">[</span><span class="n">invalid</span><span class="p">]</span> <span class="o">=</span> <span class="n">empty_value</span>
+
     <span class="n">res</span> <span class="o">=</span> <span class="n">Integrate1dResult</span><span class="p">(</span>
         <span class="n">radial</span><span class="p">,</span>
-        <span class="n">summed</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">counted</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">),</span>
-        <span class="p">(</span><span class="n">summed</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">counted</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">),</span>
+        <span class="n">I</span><span class="p">,</span>
+        <span class="n">sigma</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="n">res</span><span class="o">.</span><span class="n">_set_unit</span><span class="p">(</span><span class="n">res_mg</span><span class="o">.</span><span class="n">unit</span><span class="p">)</span>
-    <span class="n">res</span><span class="o">.</span><span class="n">_set_count</span><span class="p">(</span><span class="n">counted</span><span class="p">)</span>
-    <span class="n">res</span><span class="o">.</span><span class="n">_set_sum</span><span class="p">(</span><span class="n">summed</span><span class="p">)</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">_set_compute_engine</span><span class="p">(</span><span class="n">res_mg</span><span class="o">.</span><span class="n">compute_engine</span><span class="p">)</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">_set_unit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">)</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">_set_sum_signal</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">_set_sum_normalization</span><span class="p">(</span><span class="n">normalization</span><span class="p">)</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">_set_count</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">separateModules</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">res</span><span class="p">,</span> <span class="n">result_dict</span>
     <span class="k">else</span><span class="p">:</span>
@@ -2576,50 +2999,7 @@
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">503</span>
-<span class="normal">504</span>
-<span class="normal">505</span>
-<span class="normal">506</span>
-<span class="normal">507</span>
-<span class="normal">508</span>
-<span class="normal">509</span>
-<span class="normal">510</span>
-<span class="normal">511</span>
-<span class="normal">512</span>
-<span class="normal">513</span>
-<span class="normal">514</span>
-<span class="normal">515</span>
-<span class="normal">516</span>
-<span class="normal">517</span>
-<span class="normal">518</span>
-<span class="normal">519</span>
-<span class="normal">520</span>
-<span class="normal">521</span>
-<span class="normal">522</span>
-<span class="normal">523</span>
-<span class="normal">524</span>
-<span class="normal">525</span>
-<span class="normal">526</span>
-<span class="normal">527</span>
-<span class="normal">528</span>
-<span class="normal">529</span>
-<span class="normal">530</span>
-<span class="normal">531</span>
-<span class="normal">532</span>
-<span class="normal">533</span>
-<span class="normal">534</span>
-<span class="normal">535</span>
-<span class="normal">536</span>
-<span class="normal">537</span>
-<span class="normal">538</span>
-<span class="normal">539</span>
-<span class="normal">540</span>
-<span class="normal">541</span>
-<span class="normal">542</span>
-<span class="normal">543</span>
-<span class="normal">544</span>
-<span class="normal">545</span>
-<span class="normal">546</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">546</span>
 <span class="normal">547</span>
 <span class="normal">548</span>
 <span class="normal">549</span>
@@ -2649,7 +3029,50 @@
 <span class="normal">573</span>
 <span class="normal">574</span>
 <span class="normal">575</span>
-<span class="normal">576</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">integrate2d</span><span class="p">(</span>
+<span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span>
+<span class="normal">586</span>
+<span class="normal">587</span>
+<span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span>
+<span class="normal">599</span>
+<span class="normal">600</span>
+<span class="normal">601</span>
+<span class="normal">602</span>
+<span class="normal">603</span>
+<span class="normal">604</span>
+<span class="normal">605</span>
+<span class="normal">606</span>
+<span class="normal">607</span>
+<span class="normal">608</span>
+<span class="normal">609</span>
+<span class="normal">610</span>
+<span class="normal">611</span>
+<span class="normal">612</span>
+<span class="normal">613</span>
+<span class="normal">614</span>
+<span class="normal">615</span>
+<span class="normal">616</span>
+<span class="normal">617</span>
+<span class="normal">618</span>
+<span class="normal">619</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">integrate2d</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">radial_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span>
     <span class="n">azimuth_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">),</span>
@@ -2745,9 +3168,9 @@
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">multigonio_param_bounds_to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">multigonio_param_bounds_to_string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Need a function to easily show the parameters and bounds for each param on a gonio for all gonios on the arc&quot;&quot;&quot;</span>
     <span class="k">pass</span>
 </code></pre></div></td></tr></table></div>
@@ -2776,8 +3199,7 @@ See https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.m
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">275</span>
-<span class="normal">276</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">276</span>
 <span class="normal">277</span>
 <span class="normal">278</span>
 <span class="normal">279</span>
@@ -2835,7 +3257,8 @@ See https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.m
 <span class="normal">331</span>
 <span class="normal">332</span>
 <span class="normal">333</span>
-<span class="normal">334</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">refine2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;slsqp&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+<span class="normal">334</span>
+<span class="normal">335</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">refine2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;slsqp&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Geometry refinement tool</span>
 <span class="sd">    See https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.minimize.html</span>
 
@@ -2919,8 +3342,7 @@ See https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.m
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">225</span>
-<span class="normal">226</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">226</span>
 <span class="normal">227</span>
 <span class="normal">228</span>
 <span class="normal">229</span>
@@ -2954,7 +3376,8 @@ See https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.m
 <span class="normal">257</span>
 <span class="normal">258</span>
 <span class="normal">259</span>
-<span class="normal">260</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">residu2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+<span class="normal">260</span>
+<span class="normal">261</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">residu2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Calculates the average of the error squared for a given parameter set</span>
 
 <span class="sd">    :param param: dict, parameters dictionary for an ArcCalibrator object</span>
@@ -3016,36 +3439,36 @@ See https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.m
 
       <details class="quote">
         <summary>Source code in <code>arcwright/arcwright.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">675</span>
-<span class="normal">676</span>
-<span class="normal">677</span>
-<span class="normal">678</span>
-<span class="normal">679</span>
-<span class="normal">680</span>
-<span class="normal">681</span>
-<span class="normal">682</span>
-<span class="normal">683</span>
-<span class="normal">684</span>
-<span class="normal">685</span>
-<span class="normal">686</span>
-<span class="normal">687</span>
-<span class="normal">688</span>
-<span class="normal">689</span>
-<span class="normal">690</span>
-<span class="normal">691</span>
-<span class="normal">692</span>
-<span class="normal">693</span>
-<span class="normal">694</span>
-<span class="normal">695</span>
-<span class="normal">696</span>
-<span class="normal">697</span>
-<span class="normal">698</span>
-<span class="normal">699</span>
-<span class="normal">700</span>
-<span class="normal">701</span>
-<span class="normal">702</span>
-<span class="normal">703</span>
-<span class="normal">704</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">727</span>
+<span class="normal">728</span>
+<span class="normal">729</span>
+<span class="normal">730</span>
+<span class="normal">731</span>
+<span class="normal">732</span>
+<span class="normal">733</span>
+<span class="normal">734</span>
+<span class="normal">735</span>
+<span class="normal">736</span>
+<span class="normal">737</span>
+<span class="normal">738</span>
+<span class="normal">739</span>
+<span class="normal">740</span>
+<span class="normal">741</span>
+<span class="normal">742</span>
+<span class="normal">743</span>
+<span class="normal">744</span>
+<span class="normal">745</span>
+<span class="normal">746</span>
+<span class="normal">747</span>
+<span class="normal">748</span>
+<span class="normal">749</span>
+<span class="normal">750</span>
+<span class="normal">751</span>
+<span class="normal">752</span>
+<span class="normal">753</span>
+<span class="normal">754</span>
+<span class="normal">755</span>
+<span class="normal">756</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Creates a json object representating the ArcCalibrator object parameters</span>
 
 <span class="sd">    :param filepath: string, filepath to save the json file to</span>
