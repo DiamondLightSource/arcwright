@@ -12,3 +12,5 @@ arcwright
 
 
 Tools for integrating data from the XPDF-ARC detector on I15-1
+
+Full Documentation available at https://DiamondLightSource.github.io/arcwright/
