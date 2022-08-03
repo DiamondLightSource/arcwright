@@ -404,23 +404,32 @@ class ArcFAI(object):
 
     def integrate1d(
         self,
-        radial_range=(0, 90),
-        npt=9000,
-        separateModules=False,
-        empty_value=np.nan,
-        polarization_factor=None,
-        normalization_factor=None,
-        mask=None,
-        flat=None,
-        splitpixel=True,
-    ):
+        radial_range: tuple = (0, 90),
+        npt: int = 9000,
+        separateModules: bool = False,
+        empty_value: float = np.nan,
+        polarization_factor: Optional[float] = None,
+        normalization_factor: Optional[float | list[float]] = None,
+        mask: Optional[ArrayLike | list[ArrayLike]] = None,
+        flat: Optional[ArrayLike | list[ArrayLike]] = None,
+        splitpixel: bool = True,
+        correctSolidAngle: bool = True,
+    ) -> Integrate1dResult | tuple[Integrate1dResult, dict]:
         """Performs an integration for any data currently added to the ArcCalibrator object
-
-        Documentation copied from multi_geometry.py...
-        :param polarization_factor:  Apply polarization correction ? is None: not applies. Else provide a value from -1 to +1
-        :param normalization_factor: normalization monitors value (list of floats)
-        :param mask: numpy.Array or list of numpy.array which mask the lst_data.
-        :param flat: numpy.Array or list of numpy.array which flat the lst_data.
+        Args:
+            radial_range: The radial range over which to integrate the data
+            npt: The number of histogram bins into which the data are integrated
+            separateModules: Whether to return the dictionary of modular results as well as the overall result
+            empty_value: The value to return for a bin with no coverage
+            polarization_factor: Apply polarization correction ? None: not applies. Else provide a value from -1 to +1
+            normalization_factor: normalization monitors value
+            mask: mask or list of masks to apply during the integration
+            flat: flat or list of flats to apply during the integration
+            splitpixel: whether to use splitpixel method or cython
+            correctSolidAngle: whether to apply a solid angle correction
+        Returns:
+            res: the result of the integration
+            result_dict: the individual modular results
         """
         mask = self.get_module_imgs_dict_from_img(mask)
         flat = self.get_module_imgs_dict_from_img(flat)
@@ -442,29 +451,47 @@ class ArcFAI(object):
                     mask[module_name],
                     flat[module_name],
                     splitpixel,
+                    correctSolidAngle,
+                    None,
                 ],
             )
             process.start()
             threads.append(process)
         for process in threads:
             process.join()
-        for i, module_name in enumerate(self.module_names):
+
+        signal = np.zeros(npt, dtype=np.float64)
+        normalization = np.zeros_like(signal)
+        count = np.zeros_like(signal)
+        for module_name in self.module_names:
             res_mg = result_dict[module_name]
-            if i == 0:
-                summed = res_mg.sum
-                counted = res_mg.count
-            else:
-                summed += res_mg.sum
-                counted += res_mg.count
-            radial = res_mg.radial
+            signal += res_mg.sum_signal
+            normalization += res_mg.sum_normalization
+            count += res_mg.count
+
+        radial = res_mg.radial
+
+        tiny = np.finfo("float32").tiny
+        norm = np.maximum(normalization, tiny)
+
+        invalid = count <= 0.0
+        I = signal / norm
+        I[invalid] = empty_value
+
+        sigma = np.sqrt(I) / norm
+        sigma[invalid] = empty_value
+
         res = Integrate1dResult(
             radial,
-            summed / np.maximum(counted, 1e-10),
-            (summed**0.5) / np.maximum(counted, 1e-10),
+            I,
+            sigma,
         )
-        res._set_unit(res_mg.unit)
-        res._set_count(counted)
-        res._set_sum(summed)
+        res._set_compute_engine(res_mg.compute_engine)
+        res._set_unit(self.units)
+        res._set_sum_signal(signal)
+        res._set_sum_normalization(normalization)
+        res._set_count(count)
+
         if separateModules:
             return res, result_dict
         else:
@@ -483,6 +510,8 @@ class ArcFAI(object):
         mask=None,
         flat=None,
         splitpixel=True,
+        correctSolidAngle=True,
+        lst_variance=None,
     ):
         angles = [
             sg.get_position()
@@ -503,8 +532,8 @@ class ArcFAI(object):
         result_dict[module_name] = multigeo.integrate1d(
             images,
             npt,
-            correctSolidAngle=True,
-            lst_variance=None,
+            correctSolidAngle=correctSolidAngle,
+            lst_variance=lst_variance,
             error_model=None,
             polarization_factor=polarization_factor,
             normalization_factor=normalization_factor,
