@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://diamondlightsource.github.io/arcwright/tutorial/">
+        <link rel="canonical" href="https://diamondlightsource.github.io/arcwright/contributing/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>Tutorial - Arcwright Documentation</title>
+        <title>Contributing - Arcwright Documentation</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tutorial" class="md-skip">
+        <a href="#contributing" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tutorial
+              Contributing
             
           </span>
         </div>
@@ -235,21 +235,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
         Tutorial
       </a>
-      
     </li>
   
 
@@ -275,11 +265,73 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../contributing/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Contributing
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-a-development-conda-environment" class="md-nav__link">
+    Setting up a development conda environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-environment" class="md-nav__link">
+    Using the environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning" class="md-nav__link">
+    Versioning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-supported-features" class="md-nav__link">
+    Other supported features
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -304,6 +356,42 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-a-development-conda-environment" class="md-nav__link">
+    Setting up a development conda environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-environment" class="md-nav__link">
+    Using the environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning" class="md-nav__link">
+    Versioning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-supported-features" class="md-nav__link">
+    Other supported features
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -314,17 +402,65 @@
             <article class="md-content__inner md-typeset">
               
                 
-  <a href="https://github.com/DiamondLightSource/arcwright/edit/master/docs/tutorial.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/DiamondLightSource/arcwright/edit/master/docs/contributing.md" title="Edit this page" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
 
-<h1 id="tutorial">Tutorial</h1>
-<pre><code>arcfai = ArcFAI()
-arcfai.add_imgs_to_goniometer_refinements([data], [0])
-result = arcfai.integrate1d()
+<h1 id="contributing">Contributing</h1>
+<p>Arcwright uses <code>hatch</code> for project management. Use these instructions to set up a development environment.</p>
+<h2 id="setting-up-a-development-conda-environment">Setting up a development conda environment</h2>
+<pre><code>mkdir arcwright-dev
+cd arcwright-dev
+git clone git@github.com:DiamondLightSource/arcwright.git
+cd arcwright
+conda env create -n arc_dev_env --file CONTRIBUTING.yml
+conda activate arc_dev_env
+pre-commit install
 </code></pre>
+<h2 id="using-the-environment">Using the environment</h2>
+<p>To enter a environment with arcwright installed in development mode (i.e. <code>pip install -e</code>)</p>
+<pre><code>conda activate arc_dev_env
+cd arcwright-dev/arcwright
+hatch shell
+</code></pre>
+<p>To exit the environment:</p>
+<pre><code>exit
+</code></pre>
+<h2 id="versioning">Versioning</h2>
+<p>arcwright uses git tags to track the version. Having made some commits, add a tag with the new version number i.e. <code>git tag v1.2.3</code>. Then push the tags <code>git push --tags</code> before running <code>hatch build</code> and <code>hatch publish</code>.</p>
+<h2 id="other-supported-features">Other supported features</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hatch run testing:cov</code></td>
+<td>Run the tests</td>
+</tr>
+<tr>
+<td><code>hatch run docs:serve</code></td>
+<td>Compile the documentation and serve locally for inspection</td>
+</tr>
+<tr>
+<td><code>hatch run docs:deploy</code></td>
+<td>Deploy the docs to github pages</td>
+</tr>
+<tr>
+<td><code>hatch build</code></td>
+<td>Perform the main build action</td>
+</tr>
+<tr>
+<td><code>hatch publish</code></td>
+<td>Publish artefacts to pypi</td>
+</tr>
+</tbody>
+</table>
 
               
             </article>
@@ -340,7 +476,7 @@ result = arcfai.integrate1d()
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../installation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Installation" rel="prev">
+        <a href="../arcfai/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The full ArcFAI API" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -349,26 +485,11 @@ result = arcfai.integrate1d()
               <span class="md-footer__direction">
                 Previous
               </span>
-              Installation
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../arcfai/" class="md-footer__link md-footer__link--next" aria-label="Next: The full ArcFAI API" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
               The full ArcFAI API
             </div>
           </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
         </a>
+      
       
     </nav>
   

@@ -2,22 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://diamondlightsource.github.io/arcwright/</loc>
-         <lastmod>2022-08-03</lastmod>
+         <lastmod>2022-08-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://diamondlightsource.github.io/arcwright/arcfai/</loc>
-         <lastmod>2022-08-03</lastmod>
+         <lastmod>2022-08-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://diamondlightsource.github.io/arcwright/contributing/</loc>
+         <lastmod>2022-08-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://diamondlightsource.github.io/arcwright/installation/</loc>
-         <lastmod>2022-08-03</lastmod>
+         <lastmod>2022-08-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://diamondlightsource.github.io/arcwright/tutorial/</loc>
-         <lastmod>2022-08-03</lastmod>
+         <lastmod>2022-08-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
