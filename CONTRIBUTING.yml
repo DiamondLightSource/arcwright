@@ -1,0 +1,9 @@
+name: /tmp/arcwrightdev
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - pre-commit
+  - hatch
+prefix: /tmp/arcwrightdev
